@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+:root {
+    /* Light theme */
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --muted: #64748b;
+    --accent-1: #3b5b92;
+    --accent-2: #7fa1c3;
+    --accent-3: #cbbf9d;
+    --card: #ffffff;
+
+    /* Dark theme Still In Working Not Final */
+    --bg-dark: #0f172a;
+    --text-dark: #e2e8f0;
+    --muted-dark: #94a3b8;
+    --card-dark: #1e293b;
+
+   --border-color:rgba(15,23,42,0.05);
+}
+
+[data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --text: var(--text-dark);
+    --muted: var(--muted-dark);
+    --card: var(--card-dark);
+}
+
+/* Tootlip Animation */
+@keyframes tooltip-show {
+    0% {
+        opacity: 0;
+        transform: translateY(4px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes tooltip-hide {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(4px) scale(0.95);
+    }
+}
+.animate-tooltip[data-state="delayed-open"],
+.animate-tooltip[data-state="open"] {
+    animation: tooltip-show 0.2s ease-out forwards;
+}
+.animate-tooltip[data-state="closed"] {
+    animation: tooltip-hide 0.15s ease-in forwards;
+}
